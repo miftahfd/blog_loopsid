@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
                 'post_id' => Post::all()->random()->id,
                 'name' => "Guest {$i}",
                 'email' => "guest{$i}@gmail.com",
-                'comment' => "Ini komen guest {$i}"
+                'comment' => "Ini komen guest {$i}",
+                'is_guest' => 1
             ]);
         }
     }
