@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
+    Route::resource('users', UserController::class);
+    Route::get('/users/{id}/comments', [UserController::class, 'showComment'])->name('user.comment');
+
     Route::resource('posts', PostController::class)->except(['show']);
 });
 

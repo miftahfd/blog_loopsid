@@ -26,7 +26,12 @@
                             </div>
 
                             <div class="col-md-12">
-                                @include('pages.comment.list', compact('post'))
+                                @php 
+                                    $comments = $post->comments;
+                                    $commentOfUser = false;
+                                @endphp
+                                <i class="fa fa-comments"></i> ({{ count($comments) }}) Comments
+                                @include('pages.comment.list', compact('comments', 'commentOfUser'))
                             </div>
                         </div>
                     </div>

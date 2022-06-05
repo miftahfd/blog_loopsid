@@ -15,7 +15,7 @@
                                 <div class="col-md-4">
                                     <div class="d-flex justify-content-between">
                                         <div class="text-muted">
-                                            {{ $post->created_at->format('d F Y') }}<br>
+                                            {{ $post->created_at->format('d F Y H:i') }}<br>
                                             <span class="text-primary">{{ $author->name }}</span> | 
                                             <span class="text-success">{{ $author->email }}</span>
                                         </div>
