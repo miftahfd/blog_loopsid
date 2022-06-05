@@ -1,3 +1,5 @@
+<i class="fa fa-comments"></i> ({{ count($comments) }}) Comments
+
 <div class="row mt-2">
     @foreach ($comments as $comment)
         @php $post = $comment->post @endphp

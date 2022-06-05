@@ -14,8 +14,8 @@ class CommentService
         $this->commentRepository = $commentRepository;
     }
 
-    public function showUserComment($id)
+    public function store($data)
     {
-        return $this->commentRepository->findUserComment($id);
+        return $this->commentRepository->create($data);
     }
 }

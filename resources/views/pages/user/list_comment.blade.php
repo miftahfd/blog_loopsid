@@ -11,7 +11,6 @@
                         <div class="row">
                             <div class="col-md-12">
                                 @php $commentOfUser = true @endphp
-                                <i class="fa fa-comments"></i> ({{ count($comments) }}) Comments
                                 @include('pages.comment.list', compact('comments', 'commentOfUser'))
                             </div>
                         </div>

@@ -4,6 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @include('layouts.flash_message')
+                
                 <div class="card">
                     <div class="card-header">Detail post</div>
 
@@ -25,12 +27,15 @@
                                 <p class="text-muted">{{ $post->content }}</p>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                @include('pages.comment.input')
+                            </div>
+
+                            <div class="col-md-12 mt-2">
                                 @php 
                                     $comments = $post->comments;
                                     $commentOfUser = false;
                                 @endphp
-                                <i class="fa fa-comments"></i> ({{ count($comments) }}) Comments
                                 @include('pages.comment.list', compact('comments', 'commentOfUser'))
                             </div>
                         </div>

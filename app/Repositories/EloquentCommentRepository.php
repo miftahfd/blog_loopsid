@@ -13,6 +13,11 @@ class EloquentCommentRepository implements CommentRepository
         $this->comment = Comment::with('post');
     }
 
+    public function create($data)
+    {
+        Comment::create($data);
+    }
+
     public function findByEmail($email)
     {
         return $this->comment->where('email', $email)->get();
