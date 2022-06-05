@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('css')
+<style>
+    .none-decoration {
+        text-decoration: none;
+    }
+
+    .none-decoration:hover {
+        text-decoration: underline;
+    }
+</style>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -16,11 +28,11 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="text-muted">
                                             {{ $post->created_at->format('d F Y') }}<br>
-                                            <span class="text-primary">{{ $author->name }}</span><br> 
-                                            <span class="text-warning">{{ $author->email }}</span>
+                                            <span class="text-primary">{{ $author->name }}</span> | 
+                                            <span class="text-success">{{ $author->email }}</span>
                                         </div>
                                     </div>
-                                    <a href="{{ route('posts.show', $post->slug) }}" class="font-weight-bold text-success">
+                                    <a href="{{ route('posts.show', $post->slug) }}" class="font-weight-bold text-black none-decoration">
                                         <h3>{{ $post->title }}</h3>
                                     </a>
                                     <p class="text-muted">{{ $post->content }}</p>
