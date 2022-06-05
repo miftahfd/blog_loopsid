@@ -17,4 +17,9 @@ class PostService
     {
         return $this->postRepository->findAll();
     }
+
+    public function detail($slug)
+    {
+        return $this->postRepository->findBySlug($slug);
+    }
 }

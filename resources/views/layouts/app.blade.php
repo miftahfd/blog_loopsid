@@ -17,8 +17,18 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <style>
+        .title {
+            text-decoration: none;
+        }
+
+        .title:hover {
+            text-decoration: underline;
+        }
+    </style>
     @yield('css')
 </head>
 <body>

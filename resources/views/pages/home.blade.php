@@ -1,17 +1,5 @@
 @extends('layouts.app')
 
-@section('css')
-<style>
-    .title {
-        text-decoration: none;
-    }
-
-    .title:hover {
-        text-decoration: underline;
-    }
-</style>
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row">
