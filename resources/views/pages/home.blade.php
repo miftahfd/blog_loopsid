@@ -2,11 +2,11 @@
 
 @section('css')
 <style>
-    .none-decoration {
+    .title {
         text-decoration: none;
     }
 
-    .none-decoration:hover {
+    .title:hover {
         text-decoration: underline;
     }
 </style>
@@ -32,7 +32,7 @@
                                             <span class="text-success">{{ $author->email }}</span>
                                         </div>
                                     </div>
-                                    <a href="{{ route('posts.show', $post->slug) }}" class="font-weight-bold text-black none-decoration">
+                                    <a href="{{ route('posts.show', $post->slug) }}" class="font-weight-bold text-black title">
                                         <h3>{{ $post->title }}</h3>
                                     </a>
                                     <p class="text-muted">{{ $post->content }}</p>
