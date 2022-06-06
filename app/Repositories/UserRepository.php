@@ -4,6 +4,6 @@ namespace App\Repositories;
 
 interface UserRepository
 {
-    public function findAll();
-    public function findById($id);
+    public function getAll();
+    public function getById($id);
 }

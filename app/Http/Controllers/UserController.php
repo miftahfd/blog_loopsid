@@ -7,14 +7,19 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct(private UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(UserService $userService)
+    public function index()
     {
-        $users = $userService->showAll();
+        $users = $this->userService->showAll();
 
         return view('pages.user.list', compact('users'));
     }
@@ -85,14 +90,12 @@ class UserController extends Controller
         //
     }
 
-    public function showComment(UserService $userService, $id)
-    {
-        $user = $userService->show($id);
-        $name = $user->name;
-        $email = $user->email;
-        
-        $comments = $userService->showComment($email);
+    public function showComment($id)
+    {   
+        $result = $this->userService->showComment($id);
+        $user = $result['user'];
+        $comments = $result['comments'];
 
-        return view('pages.user.list_comment', compact('comments', 'name'));
+        return view('pages.user.list_comment', compact('comments', 'user'));
     }
 }

@@ -7,26 +7,22 @@ use App\Repositories\UserRepository;
 
 class UserService
 {
-    private UserRepository $userRepository;
-
-    public function __construct(UserRepository $userRepository, CommentRepository $commentRepository)
+    public function __construct(private UserRepository $userRepository, private CommentRepository $commentRepository)
     {
         $this->userRepository = $userRepository;
         $this->commentRepository = $commentRepository;
     }
 
-    public function show($id)
-    {
-        return $this->userRepository->findById($id);
-    }
-
     public function showAll()
     {
-        return $this->userRepository->findAll();
+        return $this->userRepository->getAll();
     }
 
     public function showComment($id)
     {
-        return $this->commentRepository->findByEmail($id);
+        $user = $this->userRepository->getById($id);
+        $comments =  $this->commentRepository->getByEmail($user->email);
+
+        return ['user' => $user, 'comments' => $comments];
     }
 }

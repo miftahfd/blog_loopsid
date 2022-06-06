@@ -7,5 +7,5 @@ use App\Models\Comment;
 interface CommentRepository
 {
     public function create($data);
-    public function findByEmail($email);
+    public function getByEmail($email);
 }

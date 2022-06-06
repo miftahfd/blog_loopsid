@@ -6,20 +6,13 @@ use App\Models\User;
 
 class EloquentUserRepository implements UserRepository
 {
-    private $user;
-
-    public function __construct()
+    public function getAll()
     {
-        $this->user = User::query();
+        return User::get();
     }
 
-    public function findAll()
+    public function getById($id)
     {
-        return $this->user->get();
-    }
-
-    public function findById($id)
-    {
-        return $this->user->find($id);
+        return User::find($id);
     }
 }
