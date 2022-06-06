@@ -6,9 +6,16 @@ use App\Models\Comment;
 
 class EloquentCommentRepository implements CommentRepository
 {
-    public function create($data)
+    public function save($data)
     {
-        Comment::create($data);
+        $comment = new Comment;
+        $comment->post_id = $data->post_id;
+        $comment->name = $data->name;
+        $comment->email = $data->email;
+        $comment->website = $data->website;
+        $comment->comment = $data->comment;
+        $comment->is_guest = $data->is_guest;
+        $comment->save();
     }
 
     public function getByEmail($email)

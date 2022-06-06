@@ -6,6 +6,6 @@ use App\Models\Comment;
 
 interface CommentRepository
 {
-    public function create($data);
+    public function save($data);
     public function getByEmail($email);
 }

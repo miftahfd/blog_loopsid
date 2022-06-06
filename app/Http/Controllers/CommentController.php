@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Services\CommentService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+    public function __construct(private CommentService $commentService)
+    {
+        $this->commentService = $commentService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,11 +38,9 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CommentService $commentService)
+    public function store(Request $request)
     {
-        $request = $request->only(['post_id', 'name', 'email', 'website', 'comment', 'is_guest']);
-
-        $commentService->store($request);
+        $this->commentService->store($request);
 
         return back()->with('success', 'Comment created successfully!');
     }

@@ -1,16 +1,31 @@
 <form method="post" action="{{ route('comments.store') }}">
+    @php $user = Auth::user() @endphp
+    @if(Auth::check())
+        @php 
+            $isGuest = 0;
+            $readonly = 'readonly';
+            $name = $user->name;
+            $email = $user->email;
+        @endphp
+    @else
+        @php 
+            $isGuest = 1;
+            $readonly = '';
+            $name = '';
+            $email = '';
+        @endphp
+    @endif
+
     @csrf
     <input type="hidden" name="post_id" value="{{ $post->id }}">
-    <input type="hidden" name="is_guest" value="{{ Auth::check() ? 0 : 1 }}">
+    <input type="hidden" name="is_guest" value="{{ $isGuest }}">
     <div class="form-group mb-2">
         <label>Name</label>
-        <input type="text" class="form-control" name="name" {{ Auth::check() ? 'readonly' : '' }} 
-            value="{{ Auth::check() ? Auth::user()->name : '' }}" required>
+        <input type="text" class="form-control" name="name" {{ $readonly }} value="{{ $name }}" required>
     </div>
     <div class="form-group mb-2">
         <label>Email</label>
-        <input type="text" class="form-control" name="email" {{ Auth::check() ? 'readonly' : '' }} 
-            value="{{ Auth::check() ? Auth::user()->email : '' }}" required>
+        <input type="text" class="form-control" name="email" {{ $readonly }} value="{{ $email }}" required>
     </div>
     <div class="form-group mb-2">
         <label>Website</label>
