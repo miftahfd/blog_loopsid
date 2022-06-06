@@ -6,20 +6,18 @@ use App\Repositories\PostRepository;
 
 class PostService
 {
-    private PostRepository $postRepository;
-
-    public function __construct(PostRepository $postRepository)
+    public function __construct(private PostRepository $postRepository)
     {
         $this->postRepository = $postRepository;
     }
 
     public function showAll()
     {
-        return $this->postRepository->findAll();
+        return $this->postRepository->getAll();
     }
 
     public function detail($slug)
     {
-        return $this->postRepository->findBySlug($slug);
+        return $this->postRepository->getBySlug($slug);
     }
 }

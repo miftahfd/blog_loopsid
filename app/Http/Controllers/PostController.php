@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct(private PostService $postService)
+    {
+        $this->postService = $postService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,9 +49,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(PostService $postService, $slug)
+    public function show($slug)
     {
-        $post = $postService->detail($slug);
+        $post = $this->postService->detail($slug);
 
         return view('pages.post.detail', compact('post'));
     }

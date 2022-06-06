@@ -6,30 +6,13 @@ use App\Models\Post;
 
 class EloquentPostRepository implements PostRepository
 {
-    private $post;
-
-    public function __construct()
+    public function getAll()
     {
-        $this->post = Post::with('author');
-    }
-
-    public function findAll()
-    {
-        return $this->post->get();
+        return Post::with('author')->get();
     }
     
-    public function findBySlug($slug)
+    public function getBySlug($slug)
     {
-        return $this->post->where('slug', $slug)->first();
-    }  
-    
-    public function create()
-    {
-
-    }
-
-    public function update()
-    {
-
+        return Post::with('author')->where('slug', $slug)->first();
     }
 }
